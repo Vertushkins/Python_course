@@ -6,8 +6,9 @@ increase = 0.03  # Ежемесячный рост цен
 # TODO Рассчитайте подушку безопасности, чтобы протянуть 10 месяцев без долгов
 money_capital = 0
 
+# Так как мы знаем количество месяцев, то используем цикл for для расчета подушки безопасности
 for _ in range(months):
-    money_capital += spend - salary
-    spend *= 1 + increase
+    money_capital += spend - salary  # Прибавляем в подушку запас на ежемесячные расходы
+    spend *= 1 + increase  # Рост цен
 
 print(f"Подушка безопасности, чтобы протянуть {months} месяцев без долгов:", int(money_capital))
