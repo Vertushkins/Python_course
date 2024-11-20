@@ -1,13 +1,15 @@
 # TODO  Напишите функцию count_letters
 
-def count_letters(string):
-    normal_string = string.lower()  # Приводим к нижнему регистру
-    set_of_symbols = set(list(normal_string))  # Конвертируем в множество список из всех символов строки
+def count_letters(text):
+    normal_text = text.lower()  # Приводим к нижнему регистру
     letters_dict = dict()  # Создаем словарь для подсчета букв
 
-    for symbol in set_of_symbols:  # Проходимся по каждому символу из множества
+    for symbol in normal_text:  # Проходимся по каждому символу из текста
         if symbol.isalpha():  # Проверяем буква ли это
-            letters_dict[symbol] = normal_string.count(symbol)  # Если это буква, то считаем ее количество
+            if symbol in letters_dict:
+                letters_dict[symbol] += 1  # Если она раньше встречалась, то увеличиваем количество на 1
+            else:
+                letters_dict[symbol] = 1  # Иначе задаем, что встретилась первый раз
 
     return letters_dict
 
@@ -68,4 +70,4 @@ freq_letters_dict = calculate_frequency(letters_dict)  # Получаем сло
 
 # Выводим в столбик букву и ее частоту
 for letter, frequency in freq_letters_dict.items():
-    print(f"{letter}: {frequency}")
+    print(f"{letter}: {frequency:.2f}")
